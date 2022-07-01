@@ -1,0 +1,130 @@
+{
+  "name": "get-it-together",
+  "productName": "Get It Together",
+  "version": "1.0.0",
+  "description": "A notes app for Windows desktop, made with Electron",
+  "main": ".webpack/main",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "schraderjp",
+    "email": "schraderjp@gmail.com"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "src/img/icon.ico"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "get-it-together"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ],
+      "plugins": [
+        [
+          "@electron-forge/plugin-webpack",
+          {
+            "devContentSecurityPolicy": "default-src 'self' 'unsafe-inline' data:; font-src 'self' fonts.gstatic.com 'unsafe-inline';style-src 'self' fonts.googleapis.com 'unsafe-inline'; script-src 'self' 'unsafe-eval' 'unsafe-inline' data:",
+            "mainConfig": "./webpack.main.config.js",
+            "renderer": {
+              "config": "./webpack.renderer.config.js",
+              "entryPoints": [
+                {
+                  "html": "./src/index.html",
+                  "js": "./src/renderer.js",
+                  "name": "main_window"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/preset-react": "^7.16.5",
+    "@electron-forge/cli": "^6.0.0-beta.61",
+    "@electron-forge/maker-deb": "^6.0.0-beta.61",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.61",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
+    "@electron-forge/maker-zip": "^6.0.0-beta.61",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.61",
+    "@vercel/webpack-asset-relocator-loader": "1.7.0",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.0.0",
+    "electron": "16.0.5",
+    "file-loader": "^6.2.0",
+    "node-loader": "^2.0.0",
+    "style-loader": "^3.0.0"
+  },
+  "dependencies": {
+    "@mantine/core": "^3.6.2",
+    "@mantine/dates": "^3.6.2",
+    "@mantine/hooks": "^3.6.2",
+    "@mantine/modals": "^3.6.2",
+    "@mantine/notifications": "^3.6.2",
+    "@tiptap/extension-character-count": "^2.0.0-beta.24",
+    "@tiptap/extension-code-block-lowlight": "^2.0.0-beta.65",
+    "@tiptap/extension-color": "^2.0.0-beta.9",
+    "@tiptap/extension-document": "^2.0.0-beta.15",
+    "@tiptap/extension-font-family": "^2.0.0-beta.21",
+    "@tiptap/extension-highlight": "^2.0.0-beta.33",
+    "@tiptap/extension-horizontal-rule": "^2.0.0-beta.30",
+    "@tiptap/extension-link": "^2.0.0-beta.35",
+    "@tiptap/extension-placeholder": "^2.0.0-beta.46",
+    "@tiptap/extension-subscript": "^2.0.0-beta.10",
+    "@tiptap/extension-superscript": "^2.0.0-beta.10",
+    "@tiptap/extension-table": "^2.0.0-beta.46",
+    "@tiptap/extension-table-cell": "^2.0.0-beta.20",
+    "@tiptap/extension-table-header": "^2.0.0-beta.22",
+    "@tiptap/extension-table-row": "^2.0.0-beta.19",
+    "@tiptap/extension-task-item": "^2.0.0-beta.30",
+    "@tiptap/extension-task-list": "^2.0.0-beta.26",
+    "@tiptap/extension-text-align": "^2.0.0-beta.29",
+    "@tiptap/extension-text-style": "^2.0.0-beta.23",
+    "@tiptap/extension-typography": "^2.0.0-beta.19",
+    "@tiptap/extension-underline": "^2.0.0-beta.22",
+    "@tiptap/react": "^2.0.0-beta.104",
+    "@tiptap/starter-kit": "^2.0.0-beta.168",
+    "date-fns": "^2.28.0",
+    "dayjs": "^1.10.7",
+    "dexie": "^3.2.0",
+    "dexie-react-hooks": "^1.1.1",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-window-state": "^5.0.3",
+    "html-pdf": "^3.0.1",
+    "html2pdf.js": "^0.10.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "react-router-dom": "^6.2.1",
+    "react-to-pdf": "0.0.14",
+    "react-to-print": "^2.14.3",
+    "styled-components": "^5.3.3"
+  }
+}
